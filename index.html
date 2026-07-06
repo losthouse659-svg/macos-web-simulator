@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>macOS Web Simulator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BOOT SCREEN -->
+  <div id="boot-screen">
+    <div class="apple-logo">&#63743;</div>
+    <div class="boot-bar-wrap"><div class="boot-bar" id="boot-bar"></div></div>
+  </div>
+
+  <!-- LOCK SCREEN -->
+  <div id="lock-screen" style="display:none">
+    <div class="lock-time" id="lock-time"></div>
+    <div class="lock-date" id="lock-date"></div>
+    <div class="lock-hint">Klikni pro odemknutí</div>
+  </div>
+
+  <!-- DESKTOP -->
+  <div id="desktop" style="display:none">
+
+    <!-- MENU BAR -->
+    <div id="menu-bar">
+      <div class="menu-left">
+        <span class="apple-menu" id="apple-menu-btn">&#63743;</span>
+        <span class="menu-item">Finder</span>
+        <span class="menu-item">Soubor</span>
+        <span class="menu-item">Úpravy</span>
+        <span class="menu-item">Zobrazení</span>
+      </div>
+      <div class="menu-right">
+        <span id="menu-time"></span>
+        <span class="menu-icon">&#128276;</span>
+        <span class="menu-icon">&#128246;</span>
+        <span class="menu-icon">&#9711;</span>
+      </div>
+    </div>
+
+    <!-- APPLE MENU DROPDOWN -->
+    <div id="apple-dropdown" style="display:none">
+      <div class="apple-menu-item" onclick="aboutMac()">O tomto Macu</div>
+      <hr>
+      <div class="apple-menu-item" onclick="openAppStore()">App Store...</div>
+      <div class="apple-menu-item">Předvolby systému</div>
+      <hr>
+      <div class="apple-menu-item" onclick="lockMac()">Zamknout obrazovku</div>
+      <hr>
+      <div class="apple-menu-item red" onclick="shutdownMac()">Vypnout...</div>
+      <div class="apple-menu-item red" onclick="restartMac()">Restartovat...</div>
+    </div>
+
+    <!-- DESKTOP ICONS -->
+    <div class="desktop-icon" style="top:80px;left:20px" ondblclick="openWindow('finder')">
+      <div class="icon">&#128193;</div><span>Finder</span>
+    </div>
+    <div class="desktop-icon" style="top:170px;left:20px" ondblclick="openWindow('safari')">
+      <div class="icon">&#127758;</div><span>Safari</span>
+    </div>
+    <div class="desktop-icon" style="top:260px;left:20px" ondblclick="openWindow('notes')">
+      <div class="icon">&#128221;</div><span>Poznámky</span>
+    </div>
+    <div class="desktop-icon" style="top:350px;left:20px" ondblclick="openWindow('terminal')">
+      <div class="icon">&#128187;</div><span>Terminál</span>
+    </div>
+    <div class="desktop-icon" style="top:440px;left:20px" ondblclick="openWindow('calculator')">
+      <div class="icon">&#129518;</div><span>Kalkulačka</span>
+    </div>
+
+    <!-- WINDOWS CONTAINER -->
+    <div id="windows-container"></div>
+
+    <!-- DOCK -->
+    <div id="dock">
+      <div class="dock-item" onclick="openWindow('finder')" title="Finder">&#128193;</div>
+      <div class="dock-item" onclick="openWindow('safari')" title="Safari">&#127758;</div>
+      <div class="dock-item" onclick="openWindow('notes')" title="Poznámky">&#128221;</div>
+      <div class="dock-item" onclick="openWindow('terminal')" title="Terminál">&#128187;</div>
+      <div class="dock-item" onclick="openWindow('calculator')" title="Kalkulačka">&#129518;</div>
+      <div class="dock-separator"></div>
+      <div class="dock-item power-btn" onclick="shutdownMac()" title="Vypnout Mac">&#9211;</div>
+    </div>
+
+  </div>
+
+  <!-- SHUTDOWN OVERLAY -->
+  <div id="shutdown-screen" style="display:none">
+    <div class="shutdown-text" id="shutdown-text">Vypínám Mac...</div>
+  </div>
+
+  <!-- ABOUT MAC MODAL -->
+  <div id="about-modal" style="display:none">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span>O tomto Macu</span>
+        <button onclick="closeAbout()">&#10005;</button>
+      </div>
+      <div class="modal-body">
+        <div class="apple-big">&#63743;</div>
+        <h2>macOS Web Simulator</h2>
+        <p>Verze 1.0.0</p>
+        <p>Webový simulátor macOS</p>
+        <p>Vytvořeno v HTML, CSS, JS</p>
+        <p><small>&#169; 2026 losthouse659-svg</small></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
